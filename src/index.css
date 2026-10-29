@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/syne/500.css";
+@import "@fontsource/syne/600.css";
+@import "@fontsource/syne/700.css";
+
+
+@theme{
+  --font-body:"inter",sans-sarif;
+  --font-heading:"syne", sans-sarif;
+  --color-gradient:linear-gradient(
+    90deg,
+    #FF4D6D 0%,
+    #BD3EB2 25%,
+    #7B2FF7 50%,
+    #2F86F7 75%,
+    #2FF7ED 100%
+  )
+}
+
+@layer base{
+  body{
+    @apply bg-black text-white font-body text-xl overflow-x-clip;
+  }
+  h3{
+    @apply font-heading font-medium uppercase text-2xl
+  }
+}
+@layer components{
+  .main-container{
+    @apply max-w-[1600px] w-full m-auto px-4 lg:px-12
+  }
+}
+h1{
+  position:relative;
+  &::before{
+    content:'' ;
+    position:absolute;
+    left:0;
+    bottom:7px;
+    width:100%;
+    height:6px;
+    background:var(--color-gradient);
+    z-index:-1;
+
+  }
+  &::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom: 3px;
+    width:100%;
+    height: 1px;
+     background:var(--color-gradient);
+    z-index:-1;
+  }}
+
+  .text-stroke{
+  -webkit-text-stroke:1px white;
+  color:transparent;
+}
+.btn {
+  background:linear-gradient(#000, #000) padding-box,
+  var(--color-gradient) border-box;
+}
+
+.btn:hover{
+  background:var(--color-gradient)padding-box,
+  var(--color-gradient) border-box;
+  color: #fff;
+}
+.btn-light{
+  background:linear-gradient(#fff, #fff) padding-box,
+  var(--color-gradient) border-box;
+  
+}
+
+.menu-link{
+  @apply text-[10vw] lg:text-[6vw] md:text-3xl font-heading font-medium uppercase lg:opacity-60 hover:opacity-100
+}
+
+@keyframes marquee {
+  0%{transform: translateX(-100%);}
+  100%{transform: translateX(0%);}
+  
+}
+.animate-marquee{
+  animation: marquee 15s  linear infinite;
+}
+.animate-marquee-reverse{
+  animation: marquee 15s  linear infinite reverse;
+}
+
+@keyframes rotate360 {
+   0%{transform:rotate(0deg);}
+  100%{transform: rotate(360deg);}
+  
+}
+.marquee-star1{
+  animation: rotate360 10s linear infinite;
+  transform-origin: center;
+}
+.marquee-star2{
+  animation: rotate360 10s linear infinite reverse;
+  transform-origin: center;
+}
+
+
+@media (max-width:1023px) {
+  h1::before{
+    bottom:7px;
+  }
+  h1::after{
+    bottom:4px;
+  }
+}
+
